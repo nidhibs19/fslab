@@ -48,10 +48,10 @@ int main()
             s.search(key,fname);
             break;
         case 3:
-            //s.modify;
+            //s.modify();
             break;
         case 4:
-            //s.unpack();
+            s.unpack(fname);
             break;
 
             }
@@ -71,6 +71,7 @@ void Student::pack(string filename){
     string buffer;
     ofstream myf(filename.c_str(),ios::app);
     buffer= usn+"|"+name+"|"+sem+"|"+branch;
+    buffer.resize(100,'*');
     myf<<buffer<<endl;
     myf.close();
 
