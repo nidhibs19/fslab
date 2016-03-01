@@ -15,6 +15,7 @@ public:
     void search(string,string);
     void unpack(ifstream &);
     void unpack(string);
+    void modify();
     };
 int main()
 {
@@ -95,7 +96,7 @@ void Student::unpack(ifstream &myf)
 void Student::search(string key,string fname)
 {
     Student s[10];
-    int i=0,count=0;
+    int i=0,count=0,ch;
 
     ifstream myf(fname.c_str());
     //cout<<myf;
@@ -111,8 +112,18 @@ void Student::search(string key,string fname)
     }
     i++;
     }
-
+    cout<<"do you wish to modify?"<<endl;
+    cin>>ch;
+    switch(ch)
+    {
+	case 1:cout<<modify();break;
+	case 2:break;
+     }
 
 
     myf.close();
 }
+void student::modify(string usn)
+{
+pos=s.search(usn,fname);
+
