@@ -2,8 +2,6 @@
 #include <string>
 #include<fstream>
 using namespace std;
-
-
 class Student {
     string usn;
     string  name;
@@ -17,7 +15,8 @@ public:
     void unpack(string);
     void modify();
     };
-int main()
+    Student s;
+    int main()
 {
     int ch;
     //fstream f;
@@ -112,18 +111,71 @@ void Student::search(string key,string fname)
     }
     i++;
     }
-    cout<<"do you wish to modify?"<<endl;
-    cin>>ch;
-    switch(ch)
-    {
-	case 1:cout<<modify();break;
-	case 2:break;
-     }
 
 
     myf.close();
 }
-void student::modify(string usn)
+void Student::modify()
 {
-pos=s.search(usn,fname);
-
+	string search_usn;
+	string ch_name,ch_usn,ch_sem;
+	int count;
+	int search_flag=-1,modify_flag=-1,i=0,choice;
+	cout<<"Enter the USN to be modified"<<endl;
+	cin>>search_usn;
+	fp.open("input.txt",ios::in);	
+	while(fp)
+	{
+		s[i].unpack();
+		i++;
+	}
+	fp.close();
+	count=i;
+	for(i=0;i<count;i++)
+	{
+		if(s[i].usn==search_usn)
+		{
+			search_flag=i;
+			break;
+		}
+	}
+	if(search_flag==-1)
+	{
+	cout<<"Record not found"<<endl;
+	exit(1);
+	}
+	else
+	{
+		cout<<"Record found:"<<endl;
+		s[search_flag].display();
+	}
+	cout<<"Do you wish to modify the record?"<<endl;
+	cout<<"Press 1 to modify"<<endl<<"Press 0 to exit"<<endl;
+	cin>>modify_flag;
+	if(modify_flag)
+	{
+		cout<<"Enter the field to be changed"<<endl;
+		cout<<"1.Name\n2.USN\n3.Semester"<<endl;
+		cin>>choice;
+		switch(choice)
+		{
+			case 1: cout<<"Enter the Name"<<endl;
+				cin>>ch_name;
+				s[search_flag].name=ch_name;
+				break;
+			case 2:cout<<"Enter the USN"<<endl;
+				cin>>ch_usn;
+				s[search_flag].usn=ch_usn;
+				break;
+			case 3:cout<<"Enter the semester"<<endl;
+				cin>>ch_usn;
+				s[search_flag].sem=ch_sem;
+				break;	
+			default:cout<<"Wrong input"<<endl;	
+		}
+	}
+	fp.open("input.txt",ios::out);
+	s[search_flag].pack();
+	fp.close();
+	cout<<endl<<endl;
+}
