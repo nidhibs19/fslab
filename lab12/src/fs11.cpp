@@ -104,7 +104,7 @@ class FLRfile
 	 	int offset=L.get();
     		if(offset>=0)
     		{
-    		ofstream of("a.txt",ios::in|ios::out);
+    		ofstream of(fname.c_str(),ios::in|ios::out);
     		of.seekp(offset,ios::beg);
     	    	of.write(s.c_str(),n);
     		of.close();
