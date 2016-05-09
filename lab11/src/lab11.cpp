@@ -156,7 +156,7 @@ int main()
     Hashfile f("abc.txt",500,3,100);
     Student s1 ("a", "b", 1, "c");
     Student s2 ("d", "e", 2, "f");
-    Student s3 ("a", "h", 3, "i");
+    Student s3 ("g", "h", 3, "i");
     Student s4 ("j", "k", 3, "l");
     Student s5 ("m", "n", 3, "p");
     f.addrecord(s1.pack(100),"a");
